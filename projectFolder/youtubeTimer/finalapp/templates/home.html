@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+   {% load static %}
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'navbar.css' %}">
+   <link rel="stylesheet" href="{% static 'index.css' %}">
+   <title>Home</title>
+  
+   
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+
+<body>
+
+
+   <div class="topnav">
+       <a href="home.html"><img src="{% static 'ytog.png' %}" alt="Home"></a>
+       <div class="nav-right">
+           <a href="stopwatch.html"><img src="{% static 'stopwatch.png' %}" alt="Stopwatch"></a>
+           <a href="person.html"><img src="{% static 'person.png' %}" alt="Person"></a>
+       </div>
+   </div>
+
+   <button type="button" style="display: block; margin: 10px auto; padding: 10px 20px; background-color: #FF0000; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="refreshVideos()" id="focusModeButton">ENFORCE FOCUS MODE</button>
+
+
+
+
+   <div class="video-grid">
+    <!-- Repeat the following block for each video -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/nur4RYo2OQk" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    <!-- Repeat the block above to create a 4x4 grid -->
+    <!-- Example: -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/mwKJfNYwvm8" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/2ko5FQyDiS0" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    <!-- Repeat the block above to create a 4x4 grid -->
+    <!-- Example: -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/rz5TGN7eUcM" frameborder="0" allowfullscreen></iframe>
+    </div>   <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/NKdJ-xV-p_g" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    <!-- Repeat the block above to create a 4x4 grid -->
+    <!-- Example: -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/9fFWawcJXUw" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <!-- Repeat this block 14 more times to fill the 4x4 grid -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/rLYwIQmxF_Q" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    <!-- Repeat the block above to create a 4x4 grid -->
+    <!-- Example: -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/muUL8kOqeyE" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+       <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/O2AbcCbyJ2U" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    <!-- Repeat the block above to create a 4x4 grid -->
+    <!-- Example: -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/nzciqaNN4I0" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+
+
+    <!-- Example: -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/aPO5JaShu2U" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+       <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/8IQbF0IK-f4" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+       <!-- Example: -->
+       <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Hz2F_S3Tl0Y" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+       <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/2Gw4K7oqK08" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+       <!-- Example: -->
+       <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/CdOQEQ3GF6c" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+       <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/REM3sD7FatY" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+
+</div>
+
+
+   <script>
+       const apiUrl = 'https://api.quotable.io/random?tags=success';
+       let buttonClicked = false;  // Variable to track button state
+
+
+       function fetchAndDisplayQuote() {
+           const quoteContainer = document.querySelector('.quote-container');
+           const quote = document.querySelector('.quote');
+           const authorText = document.querySelector('.author');
+           const authorName = document.querySelector('.author-name');
+
+
+           quote.textContent = 'loading...';
+           authorText.textContent = '';
+           authorName.textContent = '';
+
+
+           fetch(apiUrl)
+               .then(response => response.json())
+               .then(data => {
+                   if (data.content && data.content.trim() !== "") {
+                       quote.textContent = data.content;
+                       authorText.textContent = 'by:';
+                       authorName.textContent = data.author;
+                   } else {
+                       fetchAndDisplayQuote();
+                   }
+               })
+               .catch(error => {
+                   console.error('Error getting quote:', error);
+               });
+       }
+
+       function refreshVideos() {
+        $.ajax({
+            type: 'GET',
+            url: '',
+            success: function (response) {
+                updateVideoLinks(response.new_video_links);
+            },
+            error: function (error) {
+                console.error('Error refreshing videos:', error);
+            }
+        });
+
+        document.getElementById('focusModeButton').style.display = 'none';
+        setTimeout(function () {
+            document.getElementById('focusModeButton').innerText = 'REFRESH PAGE TO EXIT FOCUS MODE';
+        }, 100);
+    }
+
+    function updateVideoLinks(newVideoLinks) {
+        const videoGrid = document.querySelector('.video-grid');
+        videoGrid.innerHTML = '';
+
+        newVideoLinks.forEach(link => {
+            const videoContainer = document.createElement('div');
+            videoContainer.className = 'video-container';
+
+            const iframe = document.createElement('iframe');
+            iframe.src = link;
+            iframe.frameborder = 0;
+            iframe.allowfullscreen = true;
+
+            videoContainer.appendChild(iframe);
+            videoGrid.appendChild(videoContainer);
+        });
+    }
+
+    fetchAndDisplayQuote();
+   </script>
+</body>
+
+
+</html>
+
+
+

@@ -1,0 +1,135 @@
+<!-- stopwatch.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'stopwatch.css' %}">
+    <style>
+        /* CSS to center the text under the images */
+        .element {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="home.html"><img src="{% static 'ytog.png' %}" alt="Home"></a> <!-- Image button for Home -->
+        <div class="nav-right">
+            <a href="stopwatch.html"><img src="{% static 'stopwatch.png' %}" alt="Stopwatch"></a> <!-- Image button for Stopwatch, linking to stopwatch.html -->
+            <a href="person.html"><img src="{% static 'person.png' %}" alt="Person"></a> <!-- Image button for Person, linking to person.html -->
+        </div>
+    </div>
+
+    <h1>Work Timer</h1>
+
+    <div class="additional-elements">
+        <div class="element">
+          <a href="newDay.html"> <img src="{% static 'plus.png' %}" alt="Plus Icon"></a> <!-- Image button for Save, calling saveToHistory() -->
+            <p>Save Current Day to History</p>
+        </div>
+        <div class="element">
+            <a href="calendar.html"><img src="{% static 'cal.png' %}" alt="Calendar Icon"></a> <!-- Image button for Calendar, linking to calendar.html -->
+            <p>View Past Entries Calendar</p>
+        </div>
+    </div>
+
+    <div class="stopwatch-container">
+        <div class="stopwatch">
+            <span id="display">00:00:00</span>
+            <button id="startStop" onclick="startStop()">Start</button>
+            <button id="reset" onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize variables
+        let isRunning = false;
+        let interval;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        // Function to start or pause the timer
+        function startStop() {
+            const startStopButton = document.getElementById("startStop");
+
+            if (isRunning) {
+                clearInterval(interval);
+                isRunning = false;
+                startStopButton.textContent = "Start";
+                startStopButton.style.backgroundColor = "#4CAF50"; // Change button color back to green
+            } else {
+                interval = setInterval(function () {
+                    seconds++;
+                    if (seconds === 60) {
+                        seconds = 0;
+                        minutes++;
+                        if (minutes === 60) {
+                            minutes = 0;
+                            hours++;
+                        }
+                    }
+                    updateDisplay();
+                }, 1000);
+                isRunning = true;
+                startStopButton.textContent = "Stop";
+                startStopButton.style.backgroundColor = "#FF5733"; // Change button color to red
+            }
+        }
+
+        // Function to reset the timer
+        function reset() {
+            clearInterval(interval);
+            isRunning = false;
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            updateDisplay();
+            document.getElementById("startStop").textContent = "Start";
+            document.getElementById("startStop").style.backgroundColor = "#4CAF50"; // Reset button color to green
+        }
+
+        // Function to update the display
+        function updateDisplay() {
+            document.getElementById("display").textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            saveTimerValues(); // Save timer values to localStorage
+        }
+
+        // Function to save timer values to localStorage
+        function saveTimerValues() {
+            localStorage.setItem('timer_seconds', seconds);
+            localStorage.setItem('timer_minutes', minutes);
+            localStorage.setItem('timer_hours', hours);
+        }
+
+        // Function to load timer values from localStorage
+        function loadTimerValues() {
+            seconds = parseInt(localStorage.getItem('timer_seconds')) || 0;
+            minutes = parseInt(localStorage.getItem('timer_minutes')) || 0;
+            hours = parseInt(localStorage.getItem('timer_hours')) || 0;
+
+            updateDisplay();
+        }
+
+        // Load timer values when the page is loaded
+        document.addEventListener('DOMContentLoaded', loadTimerValues);
+
+        // Function to save the current timer values to history
+        function saveToHistory() {
+            // You can implement this function as needed
+            // It could involve sending an AJAX request to your Django backend
+            // to save the timer values to the database
+            console.log('Saving to history...');
+        }
+    </script>
+
+</body>
+
+</html>

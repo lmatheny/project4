@@ -1,0 +1,56 @@
+/* details.css */
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.details-container {
+    background-color: white;
+    border: 2px solid red; /* Add a border */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    max-width: 400px; /* Set the maximum width for the container */
+}
+
+h1 {
+    color: #333;
+    text-decoration: underline; /* Add underline style */
+    font-weight: bold; /* Add bold style */
+    font-size: 24px; /* Set the font size */
+}
+
+h2 {
+    color: #333;
+    font-weight: bold; /* Add bold style */
+    font-size: 20px; /* Set the font size */
+}
+
+p {
+    color: #666;
+    font-weight: bold; /* Add bold style */
+    font-size: 16px; /* Set the font size */
+}
+
+.return-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: red;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.return-button:hover {
+    background-color: #555;
+}

@@ -1,0 +1,90 @@
+/* calendar.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+.delete-form {
+    display: inline-block;
+}
+
+/* calendar.css */
+
+h1 {
+    color: #FFF; /* Set the text color to dark gray */
+    font-family: 'Roboto', sans-serif; /* Use Roboto font */
+    font-size: 50px; /* Set the font size */
+    margin-bottom: 20px; /* Add some space below the heading */
+    text-align: center; /* Center the text */
+}
+
+
+/* Add this to your calendar.css file */
+
+/* Add this to your calendar.css file */
+
+/* Add this to your calendar.css file */
+
+.pagination {
+    text-align: center;
+    margin-top: 10px; /* Adjust the margin as needed */
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    background-color: #3498db; /* Change the background color as needed */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #2980b9; /* Change the hover color as needed */
+}
+
+.current {
+    font-size: 18px; /* Adjust the font size as needed */
+    color: red; /* Change the font color as needed */
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px 2px;
+}

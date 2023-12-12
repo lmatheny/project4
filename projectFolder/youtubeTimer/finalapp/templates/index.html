@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'navbar.css' %}"> <!-- Link to your external CSS file for navigation bar styling -->
+    <link rel="stylesheet" href="{% static 'index.css' %}"> <!-- Link to your external CSS file for page styling -->
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="home.html"><img src="{% static 'ytog.png' %}" alt="Home"></a> <!-- Image button for Home -->
+        <div class="nav-right">
+            <a href="stopwatch.html"><img src="{% static 'stopwatch.png' %}" alt="Stopwatch"></a> <!-- Image button for Stopwatch, linking to stopwatch.html -->
+            <a href="person.html"><img src="{% static 'person.png' %}" alt="Person"></a> <!-- Image button for Person, linking to person.html -->
+        </div>
+    </div>
+
+<div class="timer-container">
+    <span id="timer">Focused Work Goal: <span id="timerHours">008</span>:<span id="timerMinutes">00</span>:00</span>
+</div>
+
+<!-- Add this section below your timer-container -->
+
+<div class="video-thumbnail">
+    <img src="{% static 'play.png' %}" alt="Play Button" class="play-button">
+</div>
+
+<script>
+    // Retrieve the values of hours and minutes from the query parameters (URL parameters)
+    const urlParams = new URLSearchParams(window.location.search);
+    const hours = urlParams.get("hiddenHours");
+    const minutes = urlParams.get("hiddenMinutes");
+
+    // If no values are passed, set default values (8 hours)
+    const defaultHours = "08";
+    const defaultMinutes = "00";
+
+    // Update the timer elements with the values (either passed or default)
+    const timerHours = document.getElementById("timerHours");
+    const timerMinutes = document.getElementById("timerMinutes");
+    timerHours.textContent = (hours || defaultHours).padStart(2, "0");
+    timerMinutes.textContent = (minutes || defaultMinutes).padStart(2, "0");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Entry Details</title>
+    <link rel="stylesheet" href="{% static 'details.css' %}">
+</head>
+<body>
+    <div class="details-container">
+        <h1>Calendar Entry Details</h1>
+        <div class="entry-details">
+            <h2>Date: {{ entry.date }}</h2>
+            <p>Total Time: {{ entry.total_time }}</p>
+            <!-- Display other entry details as needed -->
+        </div>
+        <a href="javascript:void(0);" onclick="goBack()" class="return-button">Return to Calendar</a>
+    </div>
+
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* CSS for styling the body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #cccccc; /* Set the background color for the entire page */
+}
+
+/* CSS for the form container */
+/* CSS for the form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form vertically */
+    justify-content: center; /* Center the form horizontally */
+    height: 50vh; /* Make the form container take the full height of the viewport */
+    padding: 20px; /* Add padding to the form container */
+    
+}
+
+/* CSS for the form labels */
+.form-container label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px; /* Adjust the font size for labels */
+}
+
+/* CSS for the form input fields */
+.form-container input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #888; /* Add a border for input fields */
+    border-radius: 4px; /* Add rounded corners */
+    font-size: 16px; /* Adjust font size */
+}
+
+/* CSS for the form submit button */
+.form-container input[type="submit"] {
+    background-color: #ff0000; /* Set the submit button background color to red */
+    color: white;
+    margin-top: 30px;
+    margin-left: 15%;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 150px;
+    
+    font-size: 18px; /* Increase font size for a slightly bigger button */
+    border-radius: 10px; /* Add rounded corners to the button */
+    align-self: center; /* Center the submit button horizontally within the form container */
+}
+
+/* CSS for the form submit button on hover */
+.form-container input[type="submit"]:hover {
+    background-color: #cc0000; /* Change the hover background color to a darker shade of red */
+}
+
+/* CSS for the slider container */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; /* Add margin to create space between items */
+}
+
+/* CSS for the sliders with !important to override conflicting styles */
+.slider {
+    width: 80%;
+    margin-bottom: 10px;
+    background-color: #ff0000 !important; /* Set the slider background color to red */
+    border-radius: 5px; /* Add rounded corners to the sliders */
+}
+
+/* CSS for styling the "Start a New Day" text */
+/* CSS for styling the "Start a New Day" text */
+.new-day-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Replace with your preferred font-family */
+    font-size: 60px; /* Adjust the font size as needed */
+    font-weight: bold; /* Make the text bold */
+    color: #333; /* Set the text color to a darker shade */
+    text-transform: uppercase; /* Convert text to uppercase for a cooler effect */
+    margin-left: 2%; /* Add a 2% left margin */
+}

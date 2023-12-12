@@ -1,0 +1,111 @@
+/* CSS for the body and text */
+body {
+    background-color: #000;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+/* ... (previous styles) ... */
+
+/* CSS for the clock display */
+#display {
+    font-size: 50px; /* Adjust the font size for a larger clock */
+    margin-bottom: 20px; /* Add some bottom margin for spacing */
+}
+
+/* CSS for the top navigation bar */
+.topnav {
+    background-color: #333333;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between; /* To push the right section to the far right */
+}
+
+/* CSS for the right section of the navbar */
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* CSS for the individual images in the right section */
+.nav-right img {
+    margin-right: 50px; /* Add margin to create space between the images */
+}
+
+/* CSS for the additional elements */
+.additional-elements {
+    display: flex; /* Use flexbox to align elements horizontally */
+    justify-content: center; /* Horizontally center align elements */
+    align-items: center; /* Vertically center align elements */
+    padding: 0px; /* Add padding around the elements */
+}
+
+/* CSS for the individual elements */
+.element {
+    margin: 0 30px; /* Add margin to both sides of the elements */
+}
+
+/* CSS for the individual elements */
+.element a img {
+    max-width: 50px; /* Adjust the max width of the icons as needed */
+}
+
+
+/* CSS for styling the stopwatch container */
+.stopwatch-container {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.stopwatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* CSS for styling the "Work Timer" h1 */
+/* CSS for styling the "Work Timer" h1 */
+h1 {
+    color: white; /* Set the text color to white */
+    font-family: "Courier New", Courier, monospace; /* Set the font family */
+    font-weight: bold; /* Make the text bolder */
+    font-size: 70px;
+    text-align: center; /* Center the text horizontally */
+    margin-top: 20px; /* Add some top margin for spacing */
+    margin-left: 2%;
+}
+
+
+/* CSS for the buttons */
+button#startStop {
+    background-color: #4CAF50; /* Green color for the Start button */
+    color: white;
+}
+
+button#reset {
+    background-color: #FF5733; /* Red color for the Reset button */
+    color: white;
+}
+
+button#stop {
+    background-color: #FF5733; /* Red color for the Stop button */
+    color: white;
+}

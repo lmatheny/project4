@@ -1,0 +1,50 @@
+/* login.css */
+body {
+    background-color: black;
+    color: red;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+form {
+    background-color: black;
+    border: 2px solid red;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px red;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    background-color: black;
+    border: 1px solid red;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    height: 40px; /* Increase the height to your desired value */
+}
+
+input[type="submit"] {
+    background-color: red;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    width: 50%;
+    height: 30px; /* Increase the height to your desired value */
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: darkred;
+}

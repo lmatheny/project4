@@ -1,0 +1,49 @@
+<!-- person.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Person</title>
+    <link rel="stylesheet" href="{% static 'person.css' %}">
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="home.html"><img src="{% static 'ytog.png' %}" alt="Home"></a>
+        <div class="nav-right">
+            <a href="stopwatch.html"><img src="{% static 'stopwatch.png' %}" alt="Stopwatch"></a>
+            <a href="person.html"><img src="{% static 'person.png' %}" alt="Person"></a>
+        </div>
+    </div>
+
+    <div class="account-info">
+        <p>Additional Account Info</p>
+        <!-- Add your additional account information here -->
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="id_nickname">Nickname:</label>
+            <input type="text" name="nickname" id="id_nickname" value="{{ person.nickname }}">
+        </div>
+        <div>
+            <label for="id_bio">Bio:</label>
+            <textarea name="bio" id="id_bio">{{ person.bio }}</textarea>
+        </div>
+        <div>
+            <label for="id_age">Age:</label>
+            <input type="number" name="age" id="id_age" value="{{ person.age }}">
+        </div>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+
+</html>
