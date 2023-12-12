@@ -15,7 +15,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 
-
 # def home_view(request):
 #     if request.method == 'POST':
 #         username = request.POST.get('username')
@@ -140,14 +139,14 @@ def login_view(request):
 
         if username == hardcoded_username and password == hardcoded_password:
             # Login successful
-            return redirect('home')  # Redirect to the home page or wherever you want
-
+            response_data = {'success': True, 'redirect_url': '/CNIT581-048-Milestone4/home.html'}
         else:
             # Login failed
-            return render(request, 'login.html', {'login_failed': True})
+            response_data = {'success': False, 'login_failed': True}
+
+        return JsonResponse(response_data)
 
     return render(request, 'login.html', {'login_failed': False})
-
 
 def person_view(request):
     # Try to get the existing person object with ID=1 or create it if it doesn't exist
