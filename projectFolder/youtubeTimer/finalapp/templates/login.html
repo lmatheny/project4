@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'login.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Login</title>
 </head>
 
@@ -13,12 +14,12 @@
 
     <div class="login-container">
         <h2>Youtube Work Tracker</h2>
-        
+
         {% if login_failed %}
-            <p class="error-message">Invalid username or password. Please try again.</p>
+        <p class="error-message">Invalid username or password. Please try again.</p>
         {% endif %}
 
-        <form method="post" action=''>
+        <form id="loginForm" method="post" action=''>
             {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -26,9 +27,37 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">Login</button>
+            <button type="button" onclick="submitForm()">Login</button>
         </form>
     </div>
+
+    <script>
+        function submitForm() {
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: {
+                    'username': username,
+                    'password': password,
+                    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success) {
+                        window.location.href = data.redirect_url;
+                    } else {
+                        $('.error-message').text('Invalid username or password. Please try again.');
+                    }
+                },
+                error: function () {
+                    console.log('Error in AJAX request');
+                }
+            });
+        }
+    </script>
 
 </body>
 
